@@ -1,0 +1,22 @@
+TICKET #482
+Estado:    Abierto
+Prioridad: Alta
+Reporta:   Atención al cliente
+
+Título: El contador "Quedan N pendientes" cuenta mal
+
+Descripción:
+Un usuario tiene 3 tareas y marca 1 como completada. El contador
+debería decir "Quedan 2 pendientes", pero dice "Quedan 1 pendientes".
+Parece que cuenta las tareas completadas en vez de las pendientes.
+
+Pasos para reproducir:
+  1. Agregar 3 tareas.
+  2. Marcar 1 como completada.
+  3. Mirar el contador al final de la lista.
+
+Resultado actual:   Quedan 1 pendientes
+Resultado esperado: Quedan 2 pendientes
+
+Notas:
+  El backend tiene pruebas automáticas. Una de ellas debería estar fallando.

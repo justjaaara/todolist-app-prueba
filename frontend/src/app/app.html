@@ -1,0 +1,34 @@
+<main class="todo">
+  <h1>Mis tareas</h1>
+
+  <form class="nuevo" (ngSubmit)="agregar()">
+    <input
+      name="titulo"
+      type="text"
+      placeholder="¿Qué hay que hacer?"
+      autocomplete="off"
+      [(ngModel)]="nuevoTitulo"
+    />
+    <button type="submit">Agregar</button>
+  </form>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <ul class="lista">
+    @for (todo of todos(); track todo.id) {
+      <li [class.completada]="todo.completada">
+        <label>
+          <input type="checkbox" [checked]="todo.completada" (change)="alternar(todo)" />
+          <span>{{ todo.titulo }}</span>
+        </label>
+        <button type="button" class="eliminar" aria-label="Eliminar tarea" (click)="eliminar(todo)">✕</button>
+      </li>
+    } @empty {
+      <li class="vacio">No hay tareas. Agrega la primera.</li>
+    }
+  </ul>
+
+  <p class="contador">Quedan {{ pendientes() }} pendientes</p>
+</main>
