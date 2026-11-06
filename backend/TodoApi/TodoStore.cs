@@ -26,5 +26,5 @@ public class TodoStore
 
     public bool Eliminar(int id) => _todos.RemoveAll(t => t.Id == id) > 0;
 
-    public int Pendientes() => _todos.Count(t => t.Completada);
+    public int Pendientes() => _todos.Count(t => !t.Completada);
 }
